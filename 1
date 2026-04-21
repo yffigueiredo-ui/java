@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Exerc4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<Double> receitas = new ArrayList<>();
+        ArrayList<Double> despesas = new ArrayList<>();
+        double somaRec = 0, somaDesp = 0;
+        char resposta;
+        int x = 1;
+
+        // receitas
+        do {
+            System.out.printf("Receita %dº: ", x++);
+            double val = sc.nextDouble();
+            receitas.add(val);
+            somaRec += val;
+
+            System.out.print("Adicionar mais? [S][N]: ");
+            resposta = sc.next().toUpperCase().charAt(0);
+        } while (resposta == 'S');
+
+        x = 1;
+
+        // despesas
+        do {
+            System.out.printf("Despesa %dº: ", x++);
+            double val = sc.nextDouble();
+            despesas.add(val);
+            somaDesp += val;
+
+            System.out.print("Adicionar mais? [S][N]: ");
+            resposta = sc.next().toUpperCase().charAt(0);
+        } while (resposta == 'S');
+
+        double saldo = somaRec - somaDesp;
+
+        System.out.printf("\nReceitas: R$%.2f\n", somaRec);
+        System.out.printf("Despesas: R$%.2f\n", somaDesp);
+        System.out.printf("Saldo: R$%.2f\n", saldo);
+
+        if (saldo < 0)
+            System.out.println("Saldo negativo, cuidado com os gastos.");
+        else if (saldo == 0)
+            System.out.println("Receitas e despesas empatadas.");
+        else
+            System.out.println("Saldo positivo!");
+
+        sc.close();
+    }
+}
