@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Exerc19 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("- - Conversor de Moedas - -");
+        System.out.println("[1] Real\n[2] Dólar\n[3] Euro");
+        System.out.print("Qual a moeda de origem: ");
+        int origem = sc.nextInt();
+
+        System.out.print("Digite o valor: ");
+        double valor = sc.nextDouble();
+
+        System.out.println("[1] Real\n[2] Dólar\n[3] Euro");
+        System.out.print("Qual a moeda de destino: ");
+        int destino = sc.nextInt();
+
+        // tabela de conversão [origem][destino] (índices 1-3, posição 0 ignorada)
+        double[][] taxas = {
+            {0,    0,    0,    0   },
+            {0,    1.0,  0.19, 0.16}, // Real
+            {0,    5.34, 1.0,  0.85}, // Dólar
+            {0,    6.29, 1.18, 1.0 }  // Euro
+        };
+
+        String[] simbolos = {"", "R$", "US$", "€"};
+
+        if (origem < 1 || origem > 3) {
+            System.out.println("Moeda de origem inválida");
+        } else if (destino < 1 || destino > 3) {
+            System.out.println("Moeda de destino inválida");
+        } else if (origem == destino) {
+            System.out.printf("Mesmo valor: %s%.2f%n", simbolos[destino], valor);
+        } else {
+            double resultado = valor * taxas[origem][destino];
+            System.out.printf("O valor convertido é %s%.2f%n", simbolos[destino], resultado);
+        }
+
+        sc.close();
+    }
+}
