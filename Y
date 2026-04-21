@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+public class Exerc12 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char clima, estacao;
+
+        // Leitura do clima
+        while (true) {
+            System.out.println("[S] Sol");
+            System.out.println("[C] Chuva");
+            System.out.print("Qual o clima de hoje? ");
+            clima = sc.next().toUpperCase().charAt(0);
+
+            if (clima == 'S' || clima == 'C') break;
+            System.out.println("Clima inválido, tente novamente.");
+        }
+
+        System.out.print("Qual a temperatura de hoje? ");
+        int temperatura = sc.nextInt();
+
+        // Leitura da estação
+        while (true) {
+            System.out.println("[P] Primavera");
+            System.out.println("[V] Verão");
+            System.out.println("[O] Outono");
+            System.out.println("[I] Inverno");
+            System.out.print("Qual a estação? ");
+            estacao = sc.next().toUpperCase().charAt(0);
+
+            if (estacao == 'P' || estacao == 'V' || estacao == 'O' || estacao == 'I') break;
+            System.out.println("Estação inválida, tente novamente.");
+        }
+
+        // Sugestão de roupa
+        switch (estacao) {
+            case 'P': // Primavera
+                if (clima == 'S' && temperatura <= 20)
+                    System.out.println("Use uma blusa e calça");
+                else if (clima == 'S')
+                    System.out.println("Use uma camisa e shorts");
+                else if (temperatura <= 20)
+                    System.out.println("Use duas blusas, calça e leve o guarda-chuva");
+                else
+                    System.out.println("Use uma blusa, calça e leve o guarda-chuva");
+                break;
+
+            case 'V': // Verão
+                if (clima == 'S' && temperatura <= 20)
+                    System.out.println("Use uma blusa e calça");
+                else if (clima == 'S')
+                    System.out.println("Use uma camisa e shorts");
+                else if (temperatura <= 20)
+                    System.out.println("Use uma blusa, calça e leve o guarda-chuva");
+                else
+                    System.out.println("Use uma camisa, calça e leve o guarda-chuva");
+                break;
+
+            case 'O': // Outono
+                if (clima == 'S' && temperatura <= 20)
+                    System.out.println("Use duas blusas e calça, considere usar uma touca");
+                else if (clima == 'S')
+                    System.out.println("Use uma blusa e calça");
+                else if (temperatura <= 20)
+                    System.out.println("Use duas/três blusas, calça, considere uma touca e leve o guarda-chuva");
+                else
+                    System.out.println("Use uma/duas blusas, calça e leve o guarda-chuva");
+                break;
+
+            case 'I': // Inverno
+                if (clima == 'S' && temperatura <= 20)
+                    System.out.println("Use três blusas, uma/duas calças, touca e/ou cachecol");
+                else if (clima == 'S')
+                    System.out.println("Use duas blusas, calça e considere uma touca");
+                else if (temperatura <= 20)
+                    System.out.println("Use três/quatro blusas, duas calças, touca e leve o guarda-chuva");
+                else
+                    System.out.println("Use uma/duas blusas, calça, touca e leve o guarda-chuva");
+                break;
+        }
+
+        sc.close();
+    }
+}
